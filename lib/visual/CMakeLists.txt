@@ -1,0 +1,1 @@
+add_executable(visual_union_find visual_union_find.cpp)

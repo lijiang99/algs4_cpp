@@ -1,0 +1,1 @@
+add_executable(test_union_find test_union_find.cpp)
