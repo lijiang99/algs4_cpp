@@ -16,18 +16,11 @@ namespace algs4 {
 			bool Connected(int p, int q) { return Find(p) == Find(q); }
 			// 连通分量的数量
 			int count() const { return count_; }
-#ifdef VISUAL
-			int cost() const { return cost_; }
-			void reset_cost() { cost_ = 0; }
-#endif
 
 		protected:
 			int *id_;	// 分量id
 			int count_;	// 分量数量
 			int size_;	// 数组大小
-#ifdef VISUAL
-			int cost_ = 0; // 记录数组访问次数
-#endif
 	};
 
 	class QuickFindUF : public UF {
