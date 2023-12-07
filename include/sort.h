@@ -1,6 +1,7 @@
 #ifndef ALGS4_SORT_H_
 #define ALGS4_SORT_H_
 
+#include "heap.h"
 #include <algorithm>
 
 namespace algs4 {
@@ -14,6 +15,7 @@ namespace algs4 {
 			static void MergeSortBU(T *arr, int len);
 			static void QuickSort(T *arr, int len) { QuickSortCore(arr, 0, len); }
 			static void Quick3WaySort(T *arr, int len) { Quick3WaySortCore(arr, 0, len); }
+			static void HeapSort(T *arr, int len);
 		private:
 			static void MergeSortCore(T *arr, T *aux_arr, int low, int high);
 			static void Merge(T *arr, T *aux_arr, int low, int mid, int high);
@@ -208,6 +210,15 @@ namespace algs4 {
 		}
 		Quick3WaySortCore(arr, low, lt);
 		Quick3WaySortCore(arr, gt+1, high);
+	}
+
+	template <typename T, typename Compare>
+	void Sort<T, Compare>::HeapSort(T *arr, int len) {
+		BuildHeap<T, Compare>(arr, len);
+		while (len > 1) {
+			std::swap(arr[0], arr[--len]);
+			Sink<T, Compare>(arr, len, 0);
+		}
 	}
 }
 
